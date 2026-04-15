@@ -2,6 +2,9 @@ name: Build
 
 on:
   push:
+    paths-ignore:
+      - 'LICENSE'
+      - 'README.md'
   workflow_dispatch:
 
 jobs:
@@ -10,7 +13,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Run build script
         shell: cmd
@@ -21,7 +24,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: W10Fonts-EXE
+          name: W10Fonts-installer
           path: |
             *.exe
           if-no-files-found: error
